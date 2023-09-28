@@ -1,0 +1,31 @@
+name: 'Simplico TF Scan'
+description: 'Run Simplico TF Scan'
+inputs:
+  github_action_access_token:
+    description: 'github token for creating pull request'
+    required: true
+  terraform_root:
+    description: 'terraform root directory'
+    required: true
+  openai_api_key:
+    description: 'openai api key'
+    required: true
+  verbose:
+    description: 'verbose'
+    required: false
+    default: 'false'
+outputs:
+  logs:
+    description: "Simplico TF Scan logs"
+runs:
+    using: 'docker'
+    image: 'Dockerfile'
+    env:
+      TERRAFORM_PATH: ${{ inputs.terraform_root }}
+      OPENAI_API_KEY: ${{ inputs.openai_api_key }}
+      ACCESS_TOKEN: ${{ inputs.github_action_access_token }}
+      USER_NAME: ${{ github.actor }}
+      REPO_NAME: ${{ github.repository }}
+      GITHUB_RUN_NUMBER: ${{ github.run_number }}
+      BRANCH_NAME: ${{ steps.extract_branch.outputs.branch }}
+      VERBOSE: ${{ inputs.verbose }}

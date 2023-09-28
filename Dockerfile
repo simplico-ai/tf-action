@@ -1,0 +1,1 @@
+FROM guyal/simplico:tf-latest AS simplico-tf-action
