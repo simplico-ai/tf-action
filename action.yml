@@ -4,6 +4,15 @@ inputs:
   github_action_access_token:
     description: 'github token for creating pull request'
     required: true
+  github_user_name:
+    description: 'github user name'
+    required: true
+  github_repo_name:
+    description: 'github repo name'
+    required: true
+  github_run_number:
+    description: 'github run number'
+    required: true
   terraform_root:
     description: 'terraform root directory'
     required: true
@@ -27,8 +36,8 @@ runs:
       TERRAFORM_PATH: ${{ inputs.terraform_root }}
       OPENAI_API_KEY: ${{ inputs.openai_api_key }}
       ACCESS_TOKEN: ${{ inputs.github_action_access_token }}
-      USER_NAME: ${{ github.actor }}
-      REPO_NAME: ${{ github.repository }}
-      GITHUB_RUN_NUMBER: ${{ github.run_number }}
+      USER_NAME: ${{ inputs.github_user_name }}
+      REPO_NAME: ${{ inputs.github_repo_name }}
+      GITHUB_RUN_NUMBER: ${{ inputs.github_run_number }}
       BRANCH_NAME: ${{ inputs.branch_name }}
       VERBOSE: ${{ inputs.verbose }}
