@@ -10,6 +10,9 @@ inputs:
   openai_api_key:
     description: 'openai api key'
     required: true
+  branch_name:
+    description: 'branch name'
+    required: true
   verbose:
     description: 'verbose'
     required: false
@@ -27,5 +30,5 @@ runs:
       USER_NAME: ${{ github.actor }}
       REPO_NAME: ${{ github.repository }}
       GITHUB_RUN_NUMBER: ${{ github.run_number }}
-      BRANCH_NAME: ${{ steps.extract_branch.outputs.branch }}
+      BRANCH_NAME: ${{ inputs.branch_name }}
       VERBOSE: ${{ inputs.verbose }}
