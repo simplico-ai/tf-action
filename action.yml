@@ -1,5 +1,5 @@
-name: 'Simplico TF Scan'
-description: 'Run Simplico TF Scan'
+name: 'Simplico Action TF'
+description: 'Run Simplico TF'
 inputs:
   github_action_access_token:
     description: 'github token for creating pull request'

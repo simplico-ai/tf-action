@@ -1,1 +1,1 @@
-FROM guyal/simplico:tf-latest AS simplico-tf-action
+FROM guyal/simplico:test-latest AS simplico-tf-action
