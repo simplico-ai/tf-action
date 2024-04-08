@@ -30,10 +30,10 @@ runs:
     using: 'docker'
     image: 'Dockerfile'
     env:
-      TERRAFORM_PATH: ${{ inputs.terraform_root }}
+      TERRAFORM_PATH: ${{ inputs.terraform_root_dir }}
       OPENAI_API_KEY: ${{ inputs.openai_api_key }}
       GITHUB_ACCESS_TOKEN: ${{ inputs.github_action_access_token }}
-      REPO_NAME: ${{ inputs.github_repo_name }}
       GITHUB_RUN_NUMBER: ${{ inputs.github_run_number }}
+      REPO_NAME: ${{ inputs.github_repo_name }}
       BRANCH_NAME: ${{ inputs.branch_name }}
       VERBOSE: ${{ inputs.verbose }}
