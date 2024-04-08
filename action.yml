@@ -1,26 +1,23 @@
-name: 'Simplico Action TF'
-description: 'Run Simplico TF'
+name: 'SimplicoAI Action TF'
+description: 'Run SimplicoAI TF'
 inputs:
   github_action_access_token:
     description: 'github token for creating pull request'
     required: true
-  github_user_name:
-    description: 'github user name'
+  github_run_number:
+    description: 'github run number'
     required: true
   github_repo_name:
     description: 'github repo name'
     required: true
-  github_run_number:
-    description: 'github run number'
+  branch_name:
+    description: 'branch name'
     required: true
-  terraform_root:
+  terraform_root_dir:
     description: 'terraform root directory'
     required: true
   openai_api_key:
     description: 'openai api key'
-    required: true
-  branch_name:
-    description: 'branch name'
     required: true
   verbose:
     description: 'verbose'
@@ -28,15 +25,14 @@ inputs:
     default: 'false'
 outputs:
   logs:
-    description: "Simplico TF Scan logs"
+    description: "SimplicoAI Action logs"
 runs:
     using: 'docker'
     image: 'Dockerfile'
     env:
       TERRAFORM_PATH: ${{ inputs.terraform_root }}
       OPENAI_API_KEY: ${{ inputs.openai_api_key }}
-      ACCESS_TOKEN: ${{ inputs.github_action_access_token }}
-      USER_NAME: ${{ inputs.github_user_name }}
+      GITHUB_ACCESS_TOKEN: ${{ inputs.github_action_access_token }}
       REPO_NAME: ${{ inputs.github_repo_name }}
       GITHUB_RUN_NUMBER: ${{ inputs.github_run_number }}
       BRANCH_NAME: ${{ inputs.branch_name }}
